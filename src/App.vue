@@ -3,8 +3,9 @@
     <Navbar></Navbar>
     <!-- <RouterLink class="button" to="/">Notes</RouterLink> | 
     <RouterLink class="button" to="/stats">Stats</RouterLink> -->
-
-    <RouterView />
+    <div class="container is-max-desktop">
+      <RouterView />
+    </div>
   </div>
 </template>
 
