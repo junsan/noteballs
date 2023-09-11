@@ -27,26 +27,8 @@ const newNote = ref('')
 const newNoteRef = ref(null)
 const notesStore = useNotesStore()
 
-const notes = ref([
-    {
-        id: 1,
-        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris."
-    },
-    {
-        id: 2,
-        content: "This is a short note. Woo!"
-    }
-])
-
 const addNote = () => {
-    let id = Math.floor(Math.random() * 100)
-    
-    let note = {
-        id: id,
-        content: newNote.value
-    }
-
-    notes.value.unshift(note)
+    notesStore.addNote(newNote.value)
     newNote.value = ''
     newNoteRef.value.focus()
 }

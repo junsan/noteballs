@@ -15,13 +15,19 @@ export const useNotesStore = defineStore('notes', {
             ] 
         }
     ),
+    actions: {
+        addNote(noteParam) {
+            let id = Math.floor(Math.random() * 100)
+    
+            let note = {
+                id: id,
+                content: noteParam
+            }
 
+            this.notes.unshift(note)
+        }
+    }
     // getters: {
     //   doubleCount: (state) => state.count * 2,
-    // },
-    // actions: {
-    //   increment() {
-    //     this.count++
-    //   },
     // },
   })
