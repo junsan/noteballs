@@ -14,16 +14,18 @@
                 </div>
             </div>
         </div>
-        <Note @deleteClicked="removeNote" v-for="(note, index) in notes" :key="note.id" :note="note" />
+        <Note @deleteClicked="removeNote" v-for="(note, index) in notesStore.notes" :key="note.id" :note="note" />
     </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 import Note from '../components/Notes/Note.vue';
+import { useNotesStore } from '@/stores/notesStore'
 
 const newNote = ref('')
 const newNoteRef = ref(null)
+const notesStore = useNotesStore()
 
 const notes = ref([
     {
@@ -33,8 +35,7 @@ const notes = ref([
     {
         id: 2,
         content: "This is a short note. Woo!"
-    },
-    
+    }
 ])
 
 const addNote = () => {
