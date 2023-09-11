@@ -1,7 +1,7 @@
 <template>
     <div class="notes">
         <br>
-        <AddEditNote v-model="newNote" ref="addEditRef">
+        <AddEditNote placeholder="Add a note" v-model="newNote" ref="addEditRef">
             <template #button>
                 <div class="field is-grouped is-grouped-right">
                     <div class="control">
@@ -11,7 +11,6 @@
             </template>    
         </AddEditNote>
         <Note v-for="(note, index) in notesStore.notes" :key="note.id" :note="note" />
-        {{ newNote }}
     </div>
 </template>
 
