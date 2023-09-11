@@ -1,7 +1,7 @@
 <template>
     <div class="notes">
         <br>
-        <AddEditNote v-model="newNote">
+        <AddEditNote v-model="newNote" ref="addEditRef">
             <template #button>
                 <div class="field is-grouped is-grouped-right">
                     <div class="control">
@@ -24,10 +24,11 @@ import AddEditNote from '../components/Notes/AddEditNote.vue';
 const newNote = ref('')
 const newNoteRef = ref(null)
 const notesStore = useNotesStore()
+const addEditRef = ref(null)
 
 const addNote = () => {
     notesStore.addNote(newNote.value)
     newNote.value = ''
-    newNoteRef.value.focus()
+    addEditRef.value.focusTextarea()
 }
 </script>

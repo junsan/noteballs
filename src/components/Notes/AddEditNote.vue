@@ -3,7 +3,7 @@
         <div class="field">
             <div class="control">
                 <textarea :value="modelValue" 
-                @input="$emit('update:modelValue', $event.target.value)" ref="newNoteRef" class="textarea" placeholder="Add a note"></textarea>
+                @input="$emit('update:modelValue', $event.target.value)" ref="textareaRef" class="textarea" placeholder="Add a note"></textarea>
             </div>
         </div>
         <slot name="button"></slot>
@@ -11,6 +11,9 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
+const textareaRef = ref(null)
 
 const props = defineProps({
     modelValue: {
@@ -20,5 +23,13 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:modelValue'])
+
+const focusTextarea = () => {
+    textareaRef.value.focus()
+}
+
+defineExpose({
+    focusTextarea
+})
 
 </script>
