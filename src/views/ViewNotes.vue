@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <Note v-for="note in notes" :key="note.id" :note="note" />
+        <Note @deleteClicked="removeNote" v-for="(note, index) in notes" :key="note.id" :note="note" />
     </div>
 </template>
 
@@ -38,9 +38,10 @@ const notes = ref([
 ])
 
 const addNote = () => {
-
+    let id = Math.floor(Math.random() * 100)
+    
     let note = {
-        id: 3,
+        id: id,
         content: newNote.value
     }
 
@@ -49,4 +50,7 @@ const addNote = () => {
     newNoteRef.value.focus()
 }
 
+const removeNote = (deleteNote) => {
+    notes.value = notes.value.filter((note) => { return note.id !== deleteNote.id })
+}
 </script>
