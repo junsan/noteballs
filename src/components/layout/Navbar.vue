@@ -18,10 +18,10 @@
 
                 <div class="navbar-end">
                     <div class="navbar-item">
-                        <RouterLink class="navbar-item" active-class="is-active" to="/">
+                        <RouterLink @click="showDropDown = false" class="navbar-item" active-class="is-active" to="/">
                             Notes
                         </RouterLink>
-                        <RouterLink class="navbar-item" active-class="is-active" to="/stats">
+                        <RouterLink @click="showDropDown = false" class="navbar-item" active-class="is-active" to="/stats">
                             Stats
                         </RouterLink>
                     </div>
