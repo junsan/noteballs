@@ -16,11 +16,12 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import AddEditNote from '../components/Notes/AddEditNote.vue';
 import { useNotesStore } from '../stores/notesStore';
 
 const route = useRoute()
+const router = useRouter()
 const editNote = ref('')
 const noteStore = useNotesStore()
 
@@ -28,6 +29,7 @@ editNote.value = noteStore.getNoteContent(route.params.id);
 
 const updateNote = () => {
     noteStore.updateNote(route.params.id, editNote.value)
+    router.push('/')
 }
 
 </script>
