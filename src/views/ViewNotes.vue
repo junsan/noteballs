@@ -19,6 +19,7 @@ import { ref, watch } from 'vue'
 import Note from '../components/Notes/Note.vue';
 import { useNotesStore } from '@/stores/notesStore'
 import AddEditNote from '../components/Notes/AddEditNote.vue';
+import { useWatchCharacters } from '@/use/useWatchCharacters'
 
 const newNote = ref('')
 const newNoteRef = ref(null)
@@ -31,10 +32,6 @@ const addNote = () => {
     addEditRef.value.focusTextarea()
 }
 
-watch(newNote, (newValue, oldValue) => {
-    if(newValue.length === 100) {
-        alert('Maximum 100 characters only')
-    }
-})
+useWatchCharacters(newNote)
 
 </script>
