@@ -1,7 +1,7 @@
 <template>
-    <div class="modal is-active">
+    <div class="modal is-active p-5">
         <div class="modal-background"></div>
-        <div class="modal-card">
+        <div class="modal-card" ref="closeModalRef">
             <header class="modal-card-head">
                 <p class="modal-card-title">Delete Note</p>
                 <button @click="closeModal" class="delete" aria-label="close"></button>
@@ -18,6 +18,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { onClickOutside } from '@vueuse/core'
 
 const props = defineProps({
     modelValue: {
@@ -31,5 +33,9 @@ const emit = defineEmits(['update:modelValue'])
 const closeModal = () => {
     emit('update:modelValue', false)
 }
+
+const closeModalRef = ref(null)
+
+onClickOutside(closeModalRef, closeModal)
 
 </script>
