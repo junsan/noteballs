@@ -32,6 +32,6 @@ import { useWatchCharacters } from '@/use/useWatchCharacters'
 const loveNotes = ref('')
 const noteStore = useNotesStore()
 
-useWatchCharacters(loveNotes)
+useWatchCharacters(loveNotes, 20)
 
 </script>
