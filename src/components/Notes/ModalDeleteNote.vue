@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 
 const props = defineProps({
@@ -37,5 +37,17 @@ const closeModal = () => {
 const closeModalRef = ref(null)
 
 onClickOutside(closeModalRef, closeModal)
+
+const handledKeyboard = e => {
+    if(e.key === 'Escape') closeModal()
+}
+
+onMounted(() => {
+    document.addEventListener('keyup', handledKeyboard)
+})
+
+onUnmounted(() => {
+    document.removeEventListener('keyup', handledKeyboard)
+})
 
 </script>
